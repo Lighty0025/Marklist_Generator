@@ -1,0 +1,173 @@
+/* style.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+input, select {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+  max-width: 150px;
+  overflow-wrap: break-word;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  background: #e7f3e7;
+  border-left: 5px solid green;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  color: black;
+}
+
+/* Settings panel */
+#settingsPanel {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-mode .container {
+  background-color: #1e1e1e;
+  color: white;
+  box-shadow: 0 0 20px #000;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode table,
+.dark-mode .btn {
+  background-color: #333;
+  color: white;
+  border-color: #555;
+}
+
+.dark-mode .result {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: red;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+    width: 100%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  td:nth-of-type(1)::before { content: "Subject"; }
+  td:nth-of-type(2)::before { content: "Marks"; }
+  td:nth-of-type(3)::before { content: "Out Of"; }
+  td:nth-of-type(4)::before { content: "Percentage"; }
+  td:nth-of-type(5)::before { content: "Grade"; }
+  td:nth-of-type(6)::before { content: "Remove"; }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"], input[type="number"], input[type="color"], input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #settingsPanel label {
+    display: block;
+    margin-bottom: 10px;
+  }
+}

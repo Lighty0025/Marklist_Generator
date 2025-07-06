@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <title>Marksheet Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Customizable Marksheet Generator</h2>
+
+    <label for="studentName">Name:</label>
+    <input type="text" id="studentName" placeholder="Enter name" />
+
+    <label for="rollNo">Roll No:</label>
+    <input type="text" id="rollNo" placeholder="Enter roll number" />
+
+    <label for="examTerm">Exam Term:</label>
+    <input type="text" id="examTerm" placeholder="e.g., Unit Test, Semester" />
+
+    <label for="language">Language:</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="mr">मराठी</option>
+    </select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Marks</th>
+          <th>Out Of</th>
+          <th>Percentage</th>
+          <th>Grade</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="subjectRows">
+        <tr>
+          <td><input type="text" class="subjectName" placeholder="Subject" /></td>
+          <td><input type="number" class="subjectMarks" min="0" oninput="updatePercentages()" /></td>
+          <td><input type="number" class="subjectOutOf" min="1" value="100" oninput="updatePercentages()" /></td>
+          <td><span class="subjectPercent">0%</span></td>
+          <td><span class="subjectGrade">F</span></td>
+          <td><button class="delete-btn" onclick="this.closest('tr').remove(); updatePercentages(); playPop()">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn" onclick="addSubjectRow()">➕ Add Subject</button>
+    <button class="btn" onclick="generateMarksheet()">🎓 Generate Marksheet</button>
+    <button class="btn" onclick="downloadAsPNG()">📸 Download PNG</button>
+    <button class="btn" onclick="downloadAsPDF()">📄 Download PDF</button>
+    <button class="btn" onclick="downloadAllAsZip()">📦 Download ZIP</button>
+    <button class="btn" onclick="toggleSettings()">⚙️ Settings</button>
+
+    <div id="settingsPanel" style="display: none;">
+      <label>
+        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode(this)" />
+        Dark Mode
+      </label>
+
+      <label>
+        <input type="checkbox" id="soundToggle" onchange="toggleSound()" />
+        Pop Sound
+      </label>
+
+      <label for="bgColor">Background Color:</label>
+      <input type="color" id="bgColor" onchange="setBackgroundColor(this.value)" />
+
+      <label for="bgImage">Background Image:</label>
+      <input type="file" id="bgImage" accept="image/*" onchange="setBackgroundImage(this)" />
+    </div>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="languages.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
